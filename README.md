@@ -13,46 +13,46 @@ Jika passwordnya tidak bisa digunakan untuk Login, ada file dengan nama hash.php
 Fitur yang ada dalam aplikasi ini :
 
 Autentikasi
+- Sistem login dengan username: admin, password: admin
+- Session management yang aman
+- Logout functionality
 
-Sistem login dengan username: admin, password: admin
-Session management yang aman
-Logout functionality
 Dashboard
+- Statistik data (kelas, buku, anggota, peminjaman)
+- Tampilan data terbaru
+- Interface yang responsif
 
-Statistik data (kelas, buku, anggota, peminjaman)
-Tampilan data terbaru
-Interface yang responsif
 Manajemen Kelas
+- CRUD operasi untuk data kelas
+- Form validation dan error handling
+- Tampilan tabel yang user-friendly
 
-CRUD operasi untuk data kelas
-Form validation dan error handling
-Tampilan tabel yang user-friendly
 Master Data
+- Manajemen Data Buku (CRUD lengkap)
+- Manajemen Data Anggota (CRUD lengkap)
+- Relasi antara tabel
 
-Manajemen Data Buku (CRUD lengkap)
-Manajemen Data Anggota (CRUD lengkap)
-Relasi antara tabel
 Transaksi
+- Peminjaman buku
+- Pengembalian buku
+- Perhitungan denda otomatis
 
-Peminjaman buku
-Pengembalian buku
-Perhitungan denda otomatis
 Fitur Khusus
+- Cetak kartu anggota
+- Riwayat peminjaman
+- Laporan lengkap
 
-Cetak kartu anggota
-Riwayat peminjaman
-Laporan lengkap
 Pengaturan
+- Update profil admin
+- Manajemen pengaturan sistem
 
-Update profil admin
-Manajemen pengaturan sistem
 " Penggunaan Aplikasi "
+1. Login dengan user : admin dan password : admin
+2. Mulai dengan menambahkan data kelas terlebih dahulu
+3. Tambahkan data buku dan anggota
+4. Kelola transaksi peminjaman dan pengembalian
+5. Gunakan menu laporan untuk melihat statistik
 
-Login dengan user : admin dan password : admin
-Mulai dengan menambahkan data kelas terlebih dahulu
-Tambahkan data buku dan anggota
-Kelola transaksi peminjaman dan pengembalian
-Gunakan menu laporan untuk melihat statistik
-Catatan : Siapa saja bisa memanfaatkan source code dari aplikasi ini dan bebas lisensi.
-
-Jika ada yang ingin traktir kopi, boleh juga, hahaha... Bercanda Euy :)
+Catatan : 
+- Siapa saja bisa memanfaatkan source code dari aplikasi ini dan bebas lisensi.
+- Jika ada yang ingin traktir kopi, boleh juga, hahaha... Bercanda Euy :)
