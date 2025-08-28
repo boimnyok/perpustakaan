@@ -1,0 +1,161 @@
+-- Buat database
+CREATE DATABASE perpustakaan_digital;
+USE perpustakaan_digital;
+
+-- Tabel admin
+CREATE TABLE admin (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama_lengkap VARCHAR(100) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabel kelas
+CREATE TABLE kelas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama_kelas VARCHAR(10) NOT NULL,
+    tingkat ENUM('X', 'XI', 'XII') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabel anggota
+CREATE TABLE anggota (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nis VARCHAR(20) NOT NULL UNIQUE,
+    nama VARCHAR(100) NOT NULL,
+    id_kelas INT NOT NULL,
+    jenis_kelamin ENUM('Laki-laki', 'Perempuan') NOT NULL,
+    alamat TEXT,
+    no_telepon VARCHAR(15),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_kelas) REFERENCES kelas(id) ON DELETE CASCADE
+);
+
+-- Tabel buku
+CREATE TABLE buku (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    kode_buku VARCHAR(20) NOT NULL UNIQUE,
+    judul_buku VARCHAR(255) NOT NULL,
+    pengarang VARCHAR(100) NOT NULL,
+    penerbit VARCHAR(100) NOT NULL,
+    tahun_terbit YEAR NOT NULL,
+    isbn VARCHAR(20),
+    jumlah INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabel peminjaman
+CREATE TABLE peminjaman (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_anggota INT NOT NULL,
+    id_buku INT NOT NULL,
+    tanggal_pinjam DATE NOT NULL,
+    tanggal_kembali DATE,
+    status ENUM('Dipinjam', 'Dikembalikan') DEFAULT 'Dipinjam',
+    denda INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_anggota) REFERENCES anggota(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_buku) REFERENCES buku(id) ON DELETE CASCADE
+);
+
+-- Insert data admin default
+INSERT INTO admin (nama_lengkap, username, password) VALUES 
+('Administrator', 'admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'); -- password: admin
+
+-- Insert data kelas contoh
+INSERT INTO kelas (nama_kelas, tingkat) VALUES 
+('A', 'X'),
+('B', 'X'),
+('C', 'X'),
+('A', 'XI'),
+('B', 'XI'),
+('C', 'XI'),
+('A', 'XII'),
+('B', 'XII'),
+('C', 'XII');
+
+-- Insert data buku contoh
+INSERT INTO buku (kode_buku, judul_buku, pengarang, penerbit, tahun_terbit, isbn, jumlah) VALUES 
+('B001', 'Matematika untuk SMA Kelas X', 'Dr. Ahmad Yani', 'Erlangga', 2020, '9786024341234', 50),
+('B002', 'Fisika Dasar untuk SMA', 'Prof. Budi Santoso', 'Yudhistira', 2019, '9786027423456', 40),
+('B003', 'Kimia Organik', 'Dr. Siti Rahayu', 'Gramedia', 2021, '9786027890123', 35),
+('B004', 'Sejarah Indonesia Modern', 'Dr. Rudi Hartono', 'Pustaka Jaya', 2018, '9786025678901', 30),
+('B005', 'Bahasa Inggris Lanjutan', 'John Smith', 'Cambridge', 2020, '9786023345678', 45);
+
+-- Insert data anggota contoh
+INSERT INTO anggota (nis, nama, id_kelas, jenis_kelamin, alamat, no_telepon) VALUES 
+('S001', 'Andi Pratama', 1, 'Laki-laki', 'Jl. Merdeka No. 123', '081234567890'),
+('S002', 'Siti Rahmawati', 1, 'Perempuan', 'Jl. Sudirman No. 45', '081298765432'),
+('S003', 'Budi Santoso', 2, 'Laki-laki', 'Jl. Gatot Subroto No. 67', '081345678901'),
+('S004', 'Dewi Lestari', 3, 'Perempuan', 'Jl. Thamrin No. 89', '081376543210'),
+('S005', 'Rudi Hermawan', 4, 'Laki-laki', 'Jl. Asia Afrika No. 101', '081456789012');
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+Struktur Folder:
+perpustakaan_digital/
+│
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   └── bootstrap/
+│       ├── css/
+│       │   └── bootstrap.min.css
+│       └── js/
+│           └── bootstrap.bundle.min.js
+│
+├── config/
+│   └── database.php
+│
+├── includes/
+│   ├── header.php
+│   └── footer.php
+│
+├── modules/
+│   ├── auth/
+│   │   └── login.php
+│   ├── dashboard/
+│   │   └── index.php
+│   ├── kelas/
+│   │   ├── index.php
+│   │   ├── tambah.php
+│   │   ├── edit.php
+│   │   └── hapus.php
+│   ├── buku/
+│   │   ├── index.php
+│   │   ├── tambah.php
+│   │   ├── edit.php
+│   │   └── hapus.php
+│   ├── anggota/
+│   │   ├── index.php
+│   │   ├── tambah.php
+│   │   ├── edit.php
+│   │   └── hapus.php
+│   ├── peminjaman/
+│   │   ├── index.php
+│   │   ├── tambah.php
+│   │   ├── edit.php
+│   │   └── hapus.php
+│   ├── pengembalian/
+│   │   ├── index.php
+│   │   └── proses.php
+│   ├── kartu-anggota/
+│   │   └── cetak.php
+│   ├── riwayat/
+│   │   ├── index.php
+│   │   └── cetak.php
+│   ├── laporan/
+│   │   └── index.php
+│   └── pengaturan/
+│       ├── index.php
+│       └── update.php
+│
+├── index.php
+└── logout.php
