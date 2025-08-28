@@ -4,7 +4,7 @@ Dalam pembuatan aplikasi ini dibantu dengan AI agar pembuatan kodenya menjadi le
 
 Aplikasi ini cocok untuk siswa, mahasiswa, dan umum yang sedang belajar pemrograman PHP. Sedangkan untuk para Expert di pemrograman PHP, aplikasi ini masih di bawah standar karena masih banyak kekurangannya dan perlu dikembangkan lagi.
 
-Versi XAMPP yang digunakan adalah xampp-windows-x64-7.4.33
+Versi XAMPP yang digunakan adalah xampp 7.4.33
 
 Data Login untuk aplikasi User : admin Password : admin
 
