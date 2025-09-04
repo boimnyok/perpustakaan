@@ -55,4 +55,3 @@ Pengaturan
 
 Catatan : 
 - Siapa saja bisa memanfaatkan source code dari aplikasi ini dan bebas lisensi.
-- Jika ada yang ingin traktir kopi, boleh juga, hahaha... Bercanda Euy :)
